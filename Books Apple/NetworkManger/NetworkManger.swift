@@ -6,31 +6,89 @@
 //
 
 import Foundation
-
+import Alamofire
 class NetworkManger {
     
-    static let shared = NetworkManger()
+    //  static let shared = NetworkManger()
     
-//
-//
-//    func getTopHeadlinesCountry(completion: @escaping (Result<TopHeadlinesCountry , ResoneError>) -> Void){
-//        fetchGenericJSONData(urlString:URLS.topHeadlinesCountry , completion: completion)
-//    }
-//
-//
-//    func getTopHeadlinesSources(completion: @escaping (Result<TopHeadlinesSources , ResoneError>) -> Void){
-//
-//        fetchGenericJSONData(urlString: URLS.topHeadlinesSources, completion: completion)
-//    }
-//
-//
-//    func searchAllEverything(searchText:String,completion: @escaping (Result<TopHeadlinesCountry , ResoneError>) -> Void){
-//        let urlString = URLS.main +  "everything?q=\(searchText)&from=2021-08-13&sortBy=popularity&apiKey=" + URLS.apiKey
-//        fetchGenericJSONData(urlString: urlString, completion: completion)
-//    }
+    //
+    //
+    //    func getTopHeadlinesCountry(completion: @escaping (Result<TopHeadlinesCountry , ResoneError>) -> Void){
+    //        fetchGenericJSONData(urlString:URLS.topHeadlinesCountry , completion: completion)
+    //    }
+    //
+    //
+    //    func getTopHeadlinesSources(completion: @escaping (Result<TopHeadlinesSources , ResoneError>) -> Void){
+    //
+    //        fetchGenericJSONData(urlString: URLS.topHeadlinesSources, completion: completion)
+    //    }
+    //
+    //
+    //    func searchAllEverything(searchText:String,completion: @escaping (Result<TopHeadlinesCountry , ResoneError>) -> Void){
+    //        let urlString = URLS.main +  "everything?q=\(searchText)&from=2021-08-13&sortBy=popularity&apiKey=" + URLS.apiKey
+    //        fetchGenericJSONData(urlString: urlString, completion: completion)
+    //    }
+    
+    //af
+    
+    
+    //
+    //    func fetchGenericJSONData<T:Codable>(urlString:String,completion:  @escaping (Result<T , ResoneError>) -> Void){
+    //        guard let url = URL(string: urlString) else {
+    //            completion(.failure(.invaldURL))
+    //            return }
+    //        AF.request(url,method: .get,encoding: URLEncoding.default).responseData { dataRespnse in
+    //            guard let response  = dataRespnse as? HTTPURLResponse ,response.statusCode == 200 else {
+    //                            completion(.failure(.invalidResponse))
+    //
+    //                            return
+    //                        }
+    ////            if let err      = dataRespnse.error{
+    ////                print(err.localizedDescription)
+    ////                return
+    ////            }
+    //            if let _ = dataRespnse.error {
+    //                completion(.failure(.unableToComplete))
+    //                return
+    //            }
+    //
+    //         //   guard let data = dataRespnse.data else{return}
+    //            guard let data = dataRespnse.data else {
+    //                completion(.failure(.invalidData))
+    //                return }
+    ////            do{
+    ////                let encoder = JSONDecoder()
+    ////                let episode = try encoder.decode(T.self, from: data)
+    ////                completion(episode)
+    ////
+    ////            }catch let error {
+    ////                print(error.localizedDescription)
+    ////            }
+    //
+    //
+    //            do {
+    //                let objects = try JSONDecoder().decode(T.self, from: data)
+    //                // success
+    //                completion(.success(objects))
+    //            } catch {
+    //                completion(.failure(.invalidData))
+    //            }
+    //
+    //        }
+    //    }
     
     
     
+}
+
+protocol TopFreeBookServiceProtocol {
+    func getTopFreeBook(completion: @escaping (Result<ResultBooks , ResoneError>) -> Void)
+}
+protocol SearchResultBookServiceProtocol {
+    func searchResultBook(completion: @escaping (Result<DataResult , ResoneError>) -> Void)
+}
+
+class ApiService {
     func fetchGenericJSONData<T:Codable>(urlString:String,completion: @escaping (Result<T , ResoneError>) -> Void){
         guard let url = URL(string: urlString) else {
             completion(.failure(.invaldURL))
@@ -57,4 +115,20 @@ class NetworkManger {
                 completion(.failure(.invalidData))
             }
         }.resume()
-    }}
+    }
+    
+}
+
+extension ApiService : TopFreeBookServiceProtocol{
+    func getTopFreeBook(completion: @escaping (Result<ResultBooks, ResoneError>) -> Void) {
+        fetchGenericJSONData(urlString:"URLS.topHeadlinesCountry" , completion: completion)
+        
+    }
+}
+extension ApiService : SearchResultBookServiceProtocol{
+    func searchResultBook(completion: @escaping (Result<DataResult, ResoneError>) -> Void) {
+        fetchGenericJSONData(urlString:"URLS.topHeadlinesCountry" , completion: completion)
+        
+    }
+    
+}
