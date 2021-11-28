@@ -9,7 +9,7 @@ import Foundation
 enum Constant{
     
   //  static let searchCell             = "SearchCell"
-    
+    static let BookStoreCell = "BookStoreCell"
 
 
 }

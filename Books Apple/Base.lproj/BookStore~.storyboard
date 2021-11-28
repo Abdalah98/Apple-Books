@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8va-2f-cqV">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Audio Books-->
+        <scene sceneID="CcN-Pb-Axg">
+            <objects>
+                <viewController id="inK-HZ-9Hg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lkt-oQ-ADg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="tVs-oE-4Xi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Audio Books" id="ydG-Ro-u8H"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Zh-Nf-WCQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1425" y="492"/>
+        </scene>
+        <!--Books Store-->
+        <scene sceneID="QSc-6E-tvc">
+            <objects>
+                <viewController id="jBK-HL-mPv" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hC0-BT-Sg9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="jcY-bf-las"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Books Store" id="iEQ-tZ-5cq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RjO-tg-a9m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1329" y="-238"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="eCc-Nd-Jz6">
+            <objects>
+                <tabBarController id="8va-2f-cqV" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lWz-zV-odU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" systemColor="systemBlueColor"/>
+                        <color key="selectedImageTintColor" systemColor="labelColor"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="cOb-Xh-TgH" kind="relationship" relationship="viewControllers" id="5JB-m6-qhL"/>
+                        <segue destination="a0J-EK-WJD" kind="relationship" relationship="viewControllers" id="EiI-3i-bgr"/>
+                        <segue destination="f9v-Ls-e2D" kind="relationship" relationship="viewControllers" id="HHJ-1Z-dMI"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Seo-eX-oge" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-384" y="65"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="N8R-rg-m10">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cOb-Xh-TgH" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="CbR-cV-PtV"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="EtK-15-d50">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jBK-HL-mPv" kind="relationship" relationship="rootViewController" id="e67-cP-oZc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9QT-Sk-9MA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="505.79710144927537" y="-238.39285714285714"/>
+        </scene>
+        <!--Item 2-->
+        <scene sceneID="crY-cF-RB2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="a0J-EK-WJD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item 2" selectedImage="audio-book" id="pSt-Mi-n08"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="A8z-G0-Hrl">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="inK-HZ-9Hg" kind="relationship" relationship="rootViewController" id="hda-KI-nF7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xyw-rD-Jd3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="506" y="492"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="sfj-w1-7XE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Search" id="f9v-Ls-e2D" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="tF7-Og-VRb"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rug-qu-uJJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="457" y="1269"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="audio-book" width="32" height="32"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
