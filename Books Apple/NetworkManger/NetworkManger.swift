@@ -29,10 +29,12 @@ class NetworkManger {
     //    }
     //
     //
-    //    func searchAllEverything(searchText:String,completion: @escaping (Result<TopHeadlinesCountry , ResoneError>) -> Void){
-    //        let urlString = URLS.main +  "everything?q=\(searchText)&from=2021-08-13&sortBy=popularity&apiKey=" + URLS.apiKey
-    //        fetchGenericJSONData(urlString: urlString, completion: completion)
-    //    }
+        func searchBooks(searchText:String,completion: @escaping (Result<SearchBook , ResoneError>) -> Void){
+//            let urlString = URLS.main +  "everything?q=\(searchText)&from=2021-08-13&sortBy=popularity&apiKey=" + URLS.apiKey
+            let urlString =
+                "https://itunes.apple.com/search?term=\(searchText)&entity=ebook"
+            fetchGenericJSONData(urlString: urlString, completion: completion)
+        }
     
     //af
     
@@ -111,13 +113,13 @@ class NetworkManger {
     }
     
 }
-
+//https://itunes.apple.com/search?term=iPhone%20User%20Guide&entity=ebook
 protocol TopFreeBookServiceProtocol {
-    func getTopFreeBook(completion: @escaping (Result<ResultBooks , ResoneError>) -> Void)
+    func getTopFreeBook(completion: @escaping (Result<TopFreeBooks , ResoneError>) -> Void)
 }
-protocol SearchResultBookServiceProtocol {
-    func searchResultBook(completion: @escaping (Result<DataResult , ResoneError>) -> Void)
-}
+//protocol SearchResultBookServiceProtocol {
+//    func searchResultBook(completion: @escaping (Result<DataResult , ResoneError>) -> Void)
+//}
 
 class ApiService {
     func fetchGenericJSONData<T:Codable>(urlString:String,completion: @escaping (Result<T , ResoneError>) -> Void){
@@ -151,15 +153,15 @@ class ApiService {
 }
 
 extension ApiService : TopFreeBookServiceProtocol{
-    func getTopFreeBook(completion: @escaping (Result<ResultBooks, ResoneError>) -> Void) {
-        fetchGenericJSONData(urlString:"URLS.topHeadlinesCountry" , completion: completion)
+    func getTopFreeBook(completion: @escaping (Result<TopFreeBooks, ResoneError>) -> Void) {
+        fetchGenericJSONData(urlString:"https://rss.applemarketingtools.com/api/v2/us/books/top-free/50/books.json" , completion: completion)
         
     }
 }
-extension ApiService : SearchResultBookServiceProtocol{
-    func searchResultBook(completion: @escaping (Result<DataResult, ResoneError>) -> Void) {
-        fetchGenericJSONData(urlString:"URLS.topHeadlinesCountry" , completion: completion)
-        
-    }
-    
-}
+//extension ApiService : SearchResultBookServiceProtocol{
+//    func searchResultBook(completion: @escaping (Result<DataResult, ResoneError>) -> Void) {
+//        fetchGenericJSONData(urlString:"URLS.topHeadlinesCountry" , completion: completion)
+//        
+//    }
+//    
+//}
