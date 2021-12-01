@@ -55,6 +55,9 @@ extension SearchVC : UITableViewDataSource , UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constant.SearchCell) as! SearchCell
         let data = bookName[indexPath.row]
+        cell.imageViewBook.sd_setImage(with:URL(string: data.artworkUrl100 ?? ""))
+        cell.nameArtist.text = data.artistName
+        cell.nameBook.text = data.trackName
        // cell.set(result: data)
         return cell
     }
