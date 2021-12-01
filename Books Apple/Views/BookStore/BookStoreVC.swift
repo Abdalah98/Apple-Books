@@ -8,13 +8,16 @@
 import UIKit
 import SDWebImage
 class BookStoreVC: UIViewController {
-
+    
     @IBOutlet weak var bookStoreCollectionView: UICollectionView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollection()
-        // Do any additional setup after loading the view.
     }
+    
+    
     var books = [ResultBooks]()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,40 +30,39 @@ class BookStoreVC: UIViewController {
             case .success(let response):
                 
                 self.books = response.feed?.results ?? []
-                    DispatchQueue.main.async {
-                        self.title = response.feed?.title
+                DispatchQueue.main.async {
+                    self.title = response.feed?.title
                     self.bookStoreCollectionView.reloadData()
                 }
                 self.dismissLoadingView()
-
+                
             case .failure(let error):
                 self.dismissLoadingView()
                 
                 self.showAlert(withTitle: "Some thing error", withMessage: error.rawValue)
             }
         }
-        
     }
     
 }
 
 
-  
+
 
 extension BookStoreVC : UICollectionViewDelegate , UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
- 
-
+    
+    
     fileprivate func configureCollection(){
         let nib = UINib(nibName: Constant.BookStoreCell, bundle: nil)
         bookStoreCollectionView.register(nib, forCellWithReuseIdentifier: Constant.BookStoreCell)
     }
     
-     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return books.count
     }
     
     
-     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.BookStoreCell , for: indexPath) as! BookStoreCell
         let databooks = books[indexPath.row]
         cell.name.text = databooks.artistName
@@ -77,10 +79,6 @@ extension BookStoreVC : UICollectionViewDelegate , UICollectionViewDataSource,UI
     }
     
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 16
-//    }
-//
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 5, left: 16 , bottom: 5, right: 16)

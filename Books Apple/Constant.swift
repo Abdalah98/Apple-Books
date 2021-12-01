@@ -6,10 +6,11 @@
 //
 
 import Foundation
+
 enum Constant{
     
     static let SearchCell             = "SearchCell"
-    static let BookStoreCell = "BookStoreCell"
+    static let BookStoreCell          = "BookStoreCell"
 
 
 }

@@ -8,11 +8,12 @@
 import UIKit
 import SDWebImage
 class SearchVC: UIViewController {
-//SearchCell
     @IBOutlet weak var tableView: UITableView!
     
     let searchController = UISearchController()
     var bookName = [ResultSearch]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.allowsSelection = true
