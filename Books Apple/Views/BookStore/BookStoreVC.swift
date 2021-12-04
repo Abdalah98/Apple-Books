@@ -11,39 +11,68 @@ class BookStoreVC: UIViewController {
     
     @IBOutlet weak var bookStoreCollectionView: UICollectionView!
     
+    lazy var bookStoreViewModel: BookStoreViewModel =
+        {
+            return    BookStoreViewModel()
+        }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollection()
+        initVM()
     }
     
     
-    var books = [ResultBooks]()
-    
-    override func viewWillAppear(_ animated: Bool) {
+    func initVM(){
+                bookStoreViewModel.showAlertClosure = { [weak self ] () in
+                    DispatchQueue.main.async {
+                        self?.bookStoreViewModel.alertMessage
+                    }
         
-        super.viewWillAppear(animated)
-        NetworkManger.shared.getTopFreeBook{[weak self] result in
-            guard let self = self else{return}
-            self.dismissLoadingView()
-            switch result {
-            case .success(let response):
-                
-                self.books = response.feed?.results ?? []
-                DispatchQueue.main.async {
-                    self.title = response.feed?.title
-                    self.bookStoreCollectionView.reloadData()
                 }
-                self.dismissLoadingView()
-                
-            case .failure(let error):
-                self.dismissLoadingView()
-                
-                self.showAlert(withTitle: "Some thing error", withMessage: error.rawValue)
+                bookStoreViewModel.updateLoadingStatus = { [weak self] () in
+                    guard let self = self else {
+                        return
+                    }
+        
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else {
+                            return
+                        }
+                        switch self.bookStoreViewModel.state {
+                        case .empty, .error:
+                            self.dismissLoadingView()
+                            UIView.animate(withDuration: 0.2, animations: {
+                                self.bookStoreCollectionView.alpha = 0.0
+                            })
+                        case .loading:
+                            self.showLoadingView()
+                            UIView.animate(withDuration: 0.2, animations: {
+                                self.bookStoreCollectionView.alpha = 0.0
+                            })
+                        case .populated:
+                            self.dismissLoadingView()
+                            UIView.animate(withDuration: 0.2, animations: {
+                                self.bookStoreCollectionView.alpha = 1.0
+                            })
+                        }
+                    }
+                }
+        
+        bookStoreViewModel.reloadCollectionViewClouser = {
+            DispatchQueue.main.async {
+                self.bookStoreCollectionView.reloadData()
             }
+            
         }
+        bookStoreViewModel.initFetchData()
+        
     }
+    //
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 }
 
 
@@ -56,17 +85,25 @@ extension BookStoreVC : UICollectionViewDelegate , UICollectionViewDataSource,UI
         let nib = UINib(nibName: Constant.BookStoreCell, bundle: nil)
         bookStoreCollectionView.register(nib, forCellWithReuseIdentifier: Constant.BookStoreCell)
     }
-    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return books.count
+        //    return books.count
+        print(bookStoreViewModel.numberOfCell)
+        return bookStoreViewModel.numberOfCell
+        
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.BookStoreCell , for: indexPath) as! BookStoreCell
-        let databooks = books[indexPath.row]
-        cell.name.text = databooks.artistName
-        cell.imageBook.sd_setImage(with:URL(string: databooks.artworkUrl100 ?? ""))
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.BookStoreCell , for: indexPath) as? BookStoreCell
+        else {
+            fatalError("Cell not exists in storyboard")
+        }
+        let cellVM = bookStoreViewModel.getCellViewModel(at: indexPath)
+        cell.bookCellModel = cellVM
+     
         return cell
     }
     
@@ -84,7 +121,25 @@ extension BookStoreVC : UICollectionViewDelegate , UICollectionViewDataSource,UI
         return UIEdgeInsets(top: 5, left: 16 , bottom: 5, right: 16)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
-    }
+
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            print(indexPath.row)
+            self.bookStoreViewModel.userPressed(at: indexPath)
+            performSegue(withIdentifier: "show", sender: self)
+
+        }
+    
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if let vc = segue.destination as? DetailsVS,
+                let book = bookStoreViewModel.selectedPhoto {
+                vc.copyRight = book.artistName
+                vc.Relase = book.releaseDate
+                vc.image = book.artworkUrl100
+                vc.name = book.name
+                vc.nameArtist = book.artistName
+                vc.url = book.url
+                vc.artistUrl = book.artistUrl
+            
+            }
+        }
 }

@@ -32,6 +32,7 @@
 		B2860C582740523B00EDDD9B /* Helper+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2860C552740523B00EDDD9B /* Helper+Ext.swift */; };
 		B2A752EA275710E400A4BC82 /* SearchBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A752E9275710E400A4BC82 /* SearchBook.swift */; };
 		B2A752ED2757114400A4BC82 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A752EC2757114400A4BC82 /* SearchVC.swift */; };
+		B2E2AEC7275BE1D100E50B9C /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E2AEC6275BE1D100E50B9C /* ApiService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		B2860C552740523B00EDDD9B /* Helper+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Helper+Ext.swift"; sourceTree = "<group>"; };
 		B2A752E9275710E400A4BC82 /* SearchBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBook.swift; sourceTree = "<group>"; };
 		B2A752EC2757114400A4BC82 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		B2E2AEC6275BE1D100E50B9C /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				B2860C392740504100EDDD9B /* NetworkManger.swift */,
+				B2E2AEC6275BE1D100E50B9C /* ApiService.swift */,
 			);
 			path = NetworkManger;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				B2860C3C2740504100EDDD9B /* NetworkManger.swift in Sources */,
 				B25221012751F4ED003E6894 /* SearchCell.swift in Sources */,
 				B2860C4B2740508F00EDDD9B /* Constant.swift in Sources */,
+				B2E2AEC7275BE1D100E50B9C /* ApiService.swift in Sources */,
 				B2A752EA275710E400A4BC82 /* SearchBook.swift in Sources */,
 				B26F00AE2753038D00A43EE4 /* BookStoreViewModel.swift in Sources */,
 				B2860C4D2740508F00EDDD9B /* ResoneError.swift in Sources */,

@@ -54,16 +54,11 @@
                     <toolbarItems>
                         <barButtonItem title="Item" id="5vs-hE-cel"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Books Store" id="iEQ-tZ-5cq">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="959-ns-WkP">
-                            <connections>
-                                <segue destination="oVl-iF-jfH" kind="show" id="gVT-wV-I7c"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Books Store" id="iEQ-tZ-5cq"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bookStoreCollectionView" destination="LGP-8O-Osy" id="rbC-Bk-7PW"/>
+                        <segue destination="oVl-iF-jfH" kind="show" identifier="show" id="sWd-Nh-3aT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RjO-tg-a9m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -80,28 +75,31 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rJO-pU-Agm">
                                 <rect key="frame" x="0.0" y="140" width="414" height="260"/>
-                                <color key="backgroundColor" red="0.1801930964" green="0.48114252089999998" blue="0.203353703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="260" id="wMY-Ga-jCk"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oKW-i4-wIR">
-                                <rect key="frame" x="16" y="410" width="69" height="27.5"/>
+                                <rect key="frame" x="16" y="415" width="69" height="27.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="69" id="LMu-Rv-eO8"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="23"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1JH-mU-cWb">
-                                <rect key="frame" x="16" y="490" width="131.5" height="27.5"/>
+                                <rect key="frame" x="16" y="470" width="131.5" height="27.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="23"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8F-Cb-wCL">
-                                <rect key="frame" x="16" y="532.5" width="147.5" height="27.5"/>
+                                <rect key="frame" x="16" y="512.5" width="147.5" height="27.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="23"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="fhK-vb-kh3">
-                                <rect key="frame" x="34" y="589" width="345" height="110"/>
+                                <rect key="frame" x="34" y="569" width="345" height="110"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="D5T-pD-sQ0">
                                         <rect key="frame" x="0.0" y="0.0" width="345" height="41"/>
@@ -176,34 +174,28 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wk7-B3-Uaq">
-                                <rect key="frame" x="99" y="410" width="295" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Name:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wk7-B3-Uaq">
+                                <rect key="frame" x="95" y="410" width="299" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="tQH-44-TK5"/>
+                                    <constraint firstAttribute="height" constant="40" id="tQH-44-TK5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="23"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Release Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aKN-EV-27w">
-                                <rect key="frame" x="152.5" y="490" width="251.5" height="27.5"/>
+                                <rect key="frame" x="152.5" y="470" width="251.5" height="27.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="23"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5m-4s-UXX">
-                                <rect key="frame" x="168.5" y="532.5" width="147.5" height="27.5"/>
+                                <rect key="frame" x="168.5" y="512.5" width="147.5" height="27.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="23"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tM3-b1-Eua">
-                                <rect key="frame" x="16" y="365" width="382" height="24"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mJb-hJ-KSf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="mJb-hJ-KSf" firstAttribute="trailing" secondItem="tM3-b1-Eua" secondAttribute="trailing" constant="16" id="17A-Za-cEo"/>
                             <constraint firstItem="n5m-4s-UXX" firstAttribute="top" secondItem="aKN-EV-27w" secondAttribute="bottom" constant="15" id="53O-iz-2WS"/>
                             <constraint firstItem="rJO-pU-Agm" firstAttribute="trailing" secondItem="mJb-hJ-KSf" secondAttribute="trailing" id="A0y-pK-JGU"/>
                             <constraint firstItem="wk7-B3-Uaq" firstAttribute="top" secondItem="rJO-pU-Agm" secondAttribute="bottom" constant="10" id="AB3-Me-fnY"/>
@@ -212,18 +204,16 @@
                             <constraint firstItem="fhK-vb-kh3" firstAttribute="leading" secondItem="mJb-hJ-KSf" secondAttribute="leading" constant="34" id="J0P-YF-crE"/>
                             <constraint firstItem="aKN-EV-27w" firstAttribute="top" secondItem="wk7-B3-Uaq" secondAttribute="bottom" constant="20" id="JTa-At-ON1"/>
                             <constraint firstItem="rJO-pU-Agm" firstAttribute="leading" secondItem="mJb-hJ-KSf" secondAttribute="leading" id="KT1-tw-Cfr"/>
-                            <constraint firstItem="tM3-b1-Eua" firstAttribute="leading" secondItem="mJb-hJ-KSf" secondAttribute="leading" constant="16" id="OP9-NF-vEk"/>
                             <constraint firstItem="S8F-Cb-wCL" firstAttribute="leading" secondItem="mJb-hJ-KSf" secondAttribute="leading" constant="16" id="Pa4-QY-v7j"/>
-                            <constraint firstItem="wk7-B3-Uaq" firstAttribute="leading" secondItem="oKW-i4-wIR" secondAttribute="trailing" constant="14" id="PjD-a8-fuc"/>
                             <constraint firstItem="fhK-vb-kh3" firstAttribute="top" secondItem="S8F-Cb-wCL" secondAttribute="bottom" constant="29" id="RK4-NR-BVA"/>
-                            <constraint firstItem="tM3-b1-Eua" firstAttribute="top" secondItem="mJb-hJ-KSf" secondAttribute="top" constant="225" id="SdL-T5-2aX"/>
                             <constraint firstItem="S8F-Cb-wCL" firstAttribute="top" secondItem="1JH-mU-cWb" secondAttribute="bottom" constant="15" id="VoX-NC-TCa"/>
-                            <constraint firstItem="oKW-i4-wIR" firstAttribute="leading" secondItem="mJb-hJ-KSf" secondAttribute="leading" constant="16" id="Z0v-Ho-e2d"/>
+                            <constraint firstItem="wk7-B3-Uaq" firstAttribute="leading" secondItem="oKW-i4-wIR" secondAttribute="trailing" constant="10" id="YC7-P6-UsW"/>
                             <constraint firstItem="n5m-4s-UXX" firstAttribute="leading" secondItem="S8F-Cb-wCL" secondAttribute="trailing" constant="5" id="bpk-gC-CN6"/>
+                            <constraint firstItem="oKW-i4-wIR" firstAttribute="leading" secondItem="mJb-hJ-KSf" secondAttribute="leading" constant="16" id="dC1-un-jip"/>
                             <constraint firstItem="1JH-mU-cWb" firstAttribute="top" secondItem="wk7-B3-Uaq" secondAttribute="bottom" constant="20" id="h8o-4s-yvU"/>
                             <constraint firstItem="mJb-hJ-KSf" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="n5m-4s-UXX" secondAttribute="trailing" symbolic="YES" id="m1b-Bb-3yh"/>
                             <constraint firstItem="aKN-EV-27w" firstAttribute="leading" secondItem="1JH-mU-cWb" secondAttribute="trailing" constant="5" id="m68-kF-oz7"/>
-                            <constraint firstItem="oKW-i4-wIR" firstAttribute="top" secondItem="rJO-pU-Agm" secondAttribute="bottom" constant="10" id="rVC-Id-5k4"/>
+                            <constraint firstItem="oKW-i4-wIR" firstAttribute="top" secondItem="rJO-pU-Agm" secondAttribute="bottom" constant="15" id="sA8-xe-qCY"/>
                             <constraint firstItem="1JH-mU-cWb" firstAttribute="leading" secondItem="mJb-hJ-KSf" secondAttribute="leading" constant="16" id="t7v-YG-L0n"/>
                             <constraint firstItem="mJb-hJ-KSf" firstAttribute="trailing" secondItem="aKN-EV-27w" secondAttribute="trailing" constant="10" id="wAg-Oo-Agw"/>
                             <constraint firstItem="mJb-hJ-KSf" firstAttribute="trailing" secondItem="wk7-B3-Uaq" secondAttribute="trailing" constant="20" id="ym1-GC-hya"/>
@@ -232,7 +222,6 @@
                     <navigationItem key="navigationItem" id="VyP-rc-ep2"/>
                     <connections>
                         <outlet property="artistNameLabel" destination="aKN-EV-27w" id="VXs-QU-VW3"/>
-                        <outlet property="copyRightLabel" destination="tM3-b1-Eua" id="pFc-4N-Kmx"/>
                         <outlet property="imageBook" destination="rJO-pU-Agm" id="4Ke-fk-yGu"/>
                         <outlet property="nameLabel" destination="wk7-B3-Uaq" id="E9j-vf-Bds"/>
                         <outlet property="releaseDateLabel" destination="n5m-4s-UXX" id="5jc-eG-Gv5"/>

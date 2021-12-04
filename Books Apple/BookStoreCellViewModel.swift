@@ -10,7 +10,5 @@ struct BookStoreCellViewModel {
     var image : String
     var name :String
     var nameArtist :String
-    var date: String
-    var url : String
-    var urlArtist : String
+
 }

@@ -4,14 +4,20 @@
 //
 //  Created by Abdallah on 11/28/21.
 //
+public enum State {
+    case loading
+    case error
+    case empty
+    case populated
+}
 
 import Foundation
-import SDWebImage
 
 class BookStoreViewModel  {
     let apiService : TopFreeBookServiceProtocol
-    
-    private  var books = [ResultBooks]()
+    var selectedPhoto: ResultBooks?
+
+    private  var book = [ResultBooks]()
     
     private var cellViewModel : [BookStoreCellViewModel] = [BookStoreCellViewModel](){
         didSet{
@@ -22,22 +28,33 @@ class BookStoreViewModel  {
     
     
     var reloadCollectionViewClouser :(()->())?
-    var showAlertClouser: (()->())?
+    var showAlertClosure: (()->())?
     var updateLoadingStatus: (()->())?
 
     init(apiService : TopFreeBookServiceProtocol = ApiService()) {
         self.apiService = apiService
     }
     
+    //    // callback for interfaces
+
     var numberOfCell :Int {
+        print(cellViewModel.count)
         return cellViewModel.count
     }
-        var alertMessage: String? {
+    
+        var state: State = .empty {
             didSet {
-                self.showAlertClouser?()
+                self.updateLoadingStatus?()
             }
         }
-
+    
+        var alertMessage: String? {
+            didSet {
+                self.showAlertClosure?()
+            }
+        }
+     
+    
     func initFetchData(){
 
         apiService.getTopFreeBook{[weak self] result in
@@ -45,10 +62,12 @@ class BookStoreViewModel  {
             switch result {
             case .success(let response):
                 
-                self.books = response.feed?.results ?? []
-
-
-            case .failure(let error):
+               // self.book = response.feed?.results ?? []
+                self.processFetchedBook(books: response.feed?.results ?? [])
+                self.state = .populated
+            
+            case .failure(let error): 
+                self.state = .error
                 self.alertMessage = error.rawValue
 
             }
@@ -62,32 +81,31 @@ class BookStoreViewModel  {
     }
     
     func createCellViewModel( book: ResultBooks ) -> BookStoreCellViewModel {
-        var descTextContainer: [String] = [String]()
-        if let name = book.name{
-            descTextContainer.append(name)
-        }
-        if let nameArtist = book.artistName{
-            descTextContainer.append(nameArtist)
-        }
-        if let image = book.artworkUrl100{
-            descTextContainer.append(image)
-        }
-        if let url = book.url{
-            descTextContainer.append(url)
-        }
-        if let artistUrl = book.artistUrl{
-            descTextContainer.append(artistUrl)
-        }
-        if let date = book.releaseDate{
-            descTextContainer.append(date)
-        }
-        return BookStoreCellViewModel(image: book.artworkUrl100 ?? "", name: book.name ?? "", nameArtist: book.artistName ?? "", date: book.releaseDate ?? "", url: book.url ?? "", urlArtist: book.artistUrl ?? "")
+        let name = book.name
+         let nameArtist = book.artistName
+         let image = book.artworkUrl100
+
+        return BookStoreCellViewModel(image:image ?? "", name: name ?? "", nameArtist: nameArtist ?? "")
     }
+    
     private func processFetchedBook( books: [ResultBooks] ) {
-        self.books = books // Cache
+        self.book = books // Cache
         var vms = [BookStoreCellViewModel]()
         for book in books {
+            print(books.count)
             vms.append( createCellViewModel(book: book) )
+            
         }
         self.cellViewModel = vms
-    }}
+    }
+    
+    
+    func userPressed( at indexPath: IndexPath ){
+        let book = self.book[indexPath.row]
+    
+            self.selectedPhoto = book
+      
+        
+    }
+
+}
