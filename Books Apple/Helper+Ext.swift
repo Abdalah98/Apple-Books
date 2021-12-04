@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SafariServices
+   
 extension  UIViewController {
     
     func showAlert(withTitle title: String, withMessage message:String) {
@@ -23,13 +24,13 @@ extension  UIViewController {
     
     func showLoadingView(){
         DispatchQueue.main.async {
-    //        self.view.makeToastActivity(.center)
+          self.view.makeToastActivity(.center)
         }
     }
     
     func dismissLoadingView(){
         DispatchQueue.main.async {
-      //      self.view.hideToastActivity()
+           self.view.hideToastActivity()
         }
     }
     

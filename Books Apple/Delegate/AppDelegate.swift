@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

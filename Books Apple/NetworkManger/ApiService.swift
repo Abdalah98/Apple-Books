@@ -6,13 +6,19 @@
 //
 
 import Foundation
-//https://itunes.apple.com/search?term=iPhone%20User%20Guide&entity=ebook
+
 protocol TopFreeBookServiceProtocol {
     func getTopFreeBook(completion: @escaping (Result<TopFreeBooks , ResoneError>) -> Void)
 }
-//protocol SearchResultBookServiceProtocol {
-//    func searchResultBook(completion: @escaping (Result<DataResult , ResoneError>) -> Void)
-//}
+
+protocol TopPaidBookServiceProrocol {
+    func getTopPaidBooks(completion: @escaping (Result<TopFreeBooks , ResoneError>) -> Void)
+}
+
+protocol SearchResultBookServiceProtocol {
+    func searchResultBook(searchText:String,completion: @escaping (Result<SearchBook , ResoneError>) -> Void)
+}
+
 
 class ApiService {
     func fetchGenericJSONData<T:Codable>(urlString:String,completion: @escaping (Result<T , ResoneError>) -> Void){
@@ -51,10 +57,21 @@ extension ApiService : TopFreeBookServiceProtocol{
         
     }
 }
-//extension ApiService : SearchResultBookServiceProtocol{
-//    func searchResultBook(completion: @escaping (Result<DataResult, ResoneError>) -> Void) {
-//        fetchGenericJSONData(urlString:"URLS.topHeadlinesCountry" , completion: completion)
-//
-//    }
-//
-//}
+
+extension ApiService : TopPaidBookServiceProrocol{
+    func getTopPaidBooks(completion: @escaping (Result<TopFreeBooks, ResoneError>) -> Void) {
+        fetchGenericJSONData(urlString: "https://rss.applemarketingtools.com/api/v2/us/books/top-paid/50/books.json", completion: completion)
+    }
+    
+    
+}
+
+extension ApiService : SearchResultBookServiceProtocol{
+    func searchResultBook(searchText: String, completion: @escaping (Result<SearchBook, ResoneError>) -> Void) {
+        fetchGenericJSONData(urlString: "https://itunes.apple.com/search?term=\(searchText)Guide&entity=ebook", completion: completion)
+    }
+    
+   
+   
+
+}

@@ -4,12 +4,6 @@
 //
 //  Created by Abdallah on 11/28/21.
 //
-public enum State {
-    case loading
-    case error
-    case empty
-    case populated
-}
 
 import Foundation
 
