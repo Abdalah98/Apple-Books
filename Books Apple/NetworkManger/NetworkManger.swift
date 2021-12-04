@@ -11,7 +11,7 @@ class NetworkManger {
     
       static let shared = NetworkManger()
     
-    func getTopFreeBook(completion: @escaping (Result<TopFreeBooks , ResoneError>) -> Void)
+    func getTopFreeBook(completion: @escaping (Result<TopBook , ResoneError>) -> Void)
     {
     fetchGenericJSONData(urlString:"https://rss.applemarketingtools.com/api/v2/us/books/top-free/50/books.json" , completion: completion)
 

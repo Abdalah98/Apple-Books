@@ -8,11 +8,11 @@
 import Foundation
 
 protocol TopFreeBookServiceProtocol {
-    func getTopFreeBook(completion: @escaping (Result<TopFreeBooks , ResoneError>) -> Void)
+    func getTopFreeBook(completion: @escaping (Result<TopBook , ResoneError>) -> Void)
 }
 
 protocol TopPaidBookServiceProrocol {
-    func getTopPaidBooks(completion: @escaping (Result<TopFreeBooks , ResoneError>) -> Void)
+    func getTopPaidBooks(completion: @escaping (Result<TopBook , ResoneError>) -> Void)
 }
 
 protocol SearchResultBookServiceProtocol {
@@ -52,14 +52,14 @@ class ApiService {
 }
 
 extension ApiService : TopFreeBookServiceProtocol{
-    func getTopFreeBook(completion: @escaping (Result<TopFreeBooks, ResoneError>) -> Void) {
+    func getTopFreeBook(completion: @escaping (Result<TopBook, ResoneError>) -> Void) {
         fetchGenericJSONData(urlString:"https://rss.applemarketingtools.com/api/v2/us/books/top-free/50/books.json" , completion: completion)
         
     }
 }
 
 extension ApiService : TopPaidBookServiceProrocol{
-    func getTopPaidBooks(completion: @escaping (Result<TopFreeBooks, ResoneError>) -> Void) {
+    func getTopPaidBooks(completion: @escaping (Result<TopBook, ResoneError>) -> Void) {
         fetchGenericJSONData(urlString: "https://rss.applemarketingtools.com/api/v2/us/books/top-paid/50/books.json", completion: completion)
     }
     

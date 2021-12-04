@@ -1,45 +1,40 @@
 //
-//  BookStoreVC.swift
+//  TopPaidBookVC.swift
 //  Books Apple
 //
-//  Created by Abdallah on 11/27/21.
+//  Created by Abdallah on 12/4/21.
 //
 
 import UIKit
-import SDWebImage
-class BookStoreVC: UIViewController {
+
+class TopPaidBookVC: UIViewController {
+    @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet weak var bookStoreCollectionView: UICollectionView!
-    
-    lazy var bookStoreViewModel: BookStoreViewModel =
-        {
-            return    BookStoreViewModel()
-        }()
+    lazy var viewModel: TopPaidBookViewModel = {
+      return  TopPaidBookViewModel()
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Top Free Book"
+        title = "Top Paid Book"
 
         configureCollection()
         initVM()
         
     }
     
-    func showAlert( _ message: String ) {
-        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
-        alert.addAction( UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
     
+
     func initVM(){
-        bookStoreViewModel.showAlertClosure = { [weak self ] () in
+        viewModel.showAlertClouser = {[weak self] in ()
             DispatchQueue.main.async {
-                if let message = self?.bookStoreViewModel.alertMessage {
-                    self?.showAlert( message )
-                }                    }
+                if let message = self?.viewModel.alertMessage  {
+                    self?.showAlert(message)
+                }
+            }
             
         }
-        bookStoreViewModel.updateLoadingStatus = { [weak self] () in
+        viewModel.updateLoadingStatus = { [weak self] () in
             guard let self = self else {
                 return
             }
@@ -48,59 +43,49 @@ class BookStoreVC: UIViewController {
                 guard let self = self else {
                     return
                 }
-                switch self.bookStoreViewModel.state {
+                switch self.viewModel.state {
                 case .empty, .error:
                     self.dismissLoadingView()
                     UIView.animate(withDuration: 0.2, animations: {
-                        self.bookStoreCollectionView.alpha = 0.0
+                        self.collectionView.alpha = 0.0
                     })
                 case .loading:
                     self.showLoadingView()
                     UIView.animate(withDuration: 0.2, animations: {
-                        self.bookStoreCollectionView.alpha = 0.0
+                        self.collectionView.alpha = 0.0
                     })
                 case .populated:
                     self.dismissLoadingView()
                     UIView.animate(withDuration: 0.2, animations: {
-                        self.bookStoreCollectionView.alpha = 1.0
+                        self.collectionView.alpha = 1.0
                     })
                 }
             }
         }
-        
-        bookStoreViewModel.reloadCollectionViewClouser = {
+
+        viewModel.reloadcollectionViewClouser = {[weak self] in ()
             DispatchQueue.main.async {
-                self.bookStoreCollectionView.reloadData()
+
+                self?.collectionView.reloadData()
             }
-            
         }
-        bookStoreViewModel.initFetchData()
-        
+        viewModel.initFetchData()
     }
-    //
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+
 }
-
-
-
-
-extension BookStoreVC : UICollectionViewDelegate , UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+extension TopPaidBookVC : UICollectionViewDelegate , UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     
     fileprivate func configureCollection(){
         let nib = UINib(nibName: Constant.BookStoreCell, bundle: nil)
-        bookStoreCollectionView.register(nib, forCellWithReuseIdentifier: Constant.BookStoreCell)
+        collectionView.register(nib, forCellWithReuseIdentifier: Constant.BookStoreCell)
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //    return books.count
-        print(bookStoreViewModel.numberOfCell)
-        return bookStoreViewModel.numberOfCell
+        return viewModel.numberOfCell
         
     }
     
@@ -110,7 +95,7 @@ extension BookStoreVC : UICollectionViewDelegate , UICollectionViewDataSource,UI
         else {
             fatalError("Cell not exists in storyboard")
         }
-        let cellVM = bookStoreViewModel.getCellViewModel(at: indexPath)
+        let cellVM = viewModel.getCellViewModel(at: indexPath)
         cell.bookCellModel = cellVM
         
         return cell
@@ -133,14 +118,14 @@ extension BookStoreVC : UICollectionViewDelegate , UICollectionViewDataSource,UI
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
-        self.bookStoreViewModel.userPressed(at: indexPath)
+        self.viewModel.userPressed(at: indexPath)
         performSegue(withIdentifier: "show", sender: self)
-        
+
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? DetailsVS,
-           let book = bookStoreViewModel.selectedPhoto {
+           let book = viewModel.selectIndexBooks {
             vc.copyRight = book.artistName
             vc.Relase = book.releaseDate
             vc.image = book.artworkUrl100
@@ -148,7 +133,7 @@ extension BookStoreVC : UICollectionViewDelegate , UICollectionViewDataSource,UI
             vc.nameArtist = book.artistName
             vc.url = book.url
             vc.artistUrl = book.artistUrl
-            
+
         }
     }
 }

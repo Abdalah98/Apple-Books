@@ -1,5 +1,5 @@
 //
-//  TopFreeBook.swift
+//  TopBook.swift
 //  Books Apple
 //
 //  Created by Abdallah on 11/27/21.
@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - TopFreeBooks
-struct TopFreeBooks: Codable {
+struct TopBook: Codable {
     let feed: Feed?
 
     enum CodingKeys: String, CodingKey {
