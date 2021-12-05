@@ -13,13 +13,16 @@ class SearchVC: UIViewController {
     let searchController = UISearchController()
     var bookName = [ResultSearch]()
     
-    
+    var ViewModel : SearchViewModel = {
+        return SearchViewModel()
+    } ()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.allowsSelection = true
         tableViewDesign()
         configureNIBCell()
         configureSearch()
+        //   initVM()
     }
     
     fileprivate func configureSearch() {
@@ -29,10 +32,54 @@ class SearchVC: UIViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.obscuresBackgroundDuringPresentation = false
         
-        
     }
     
-
+    func initVM(searchText:String){
+        
+        ViewModel.showAlertClouser = { [weak self ] () in
+            DispatchQueue.main.async {
+                if let message = self?.ViewModel.alertMessage {
+                    self?.showAlert( message )
+                }                    }
+            
+        }
+        ViewModel.updateLoadingStatus = { [weak self] () in
+            guard let self = self else {
+                return
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                switch self.ViewModel.state {
+                case .empty, .error:
+                    self.dismissLoadingView()
+                    UIView.animate(withDuration: 0.2, animations: {
+                        self.tableView.alpha = 0.0
+                    })
+                case .loading:
+                    self.showLoadingView()
+                    UIView.animate(withDuration: 0.2, animations: {
+                        self.tableView.alpha = 0.0
+                    })
+                case .populated:
+                    self.dismissLoadingView()
+                    UIView.animate(withDuration: 0.2, animations: {
+                        self.tableView.alpha = 1.0
+                    })
+                }
+            }
+        }
+        
+        ViewModel.reloadTableViewClouser = {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
+        }
+        ViewModel.initFetchData(searchText: searchText)
+    }
 }
 extension SearchVC : UITableViewDataSource , UITableViewDelegate{
     
@@ -49,17 +96,14 @@ extension SearchVC : UITableViewDataSource , UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bookName.count
+        return  ViewModel.numofCell
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constant.SearchCell) as! SearchCell
-        let data = bookName[indexPath.row]
-        cell.imageViewBook.sd_setImage(with:URL(string: data.artworkUrl100 ?? ""))
-        cell.nameArtist.text = data.artistName
-        cell.nameBook.text = data.trackName
-       // cell.set(result: data)
+        let result = ViewModel.getCellViewModel(at: indexPath)
+        cell.searchCellViewModel = result
         return cell
     }
     
@@ -69,53 +113,34 @@ extension SearchVC : UITableViewDataSource , UITableViewDelegate{
     }
     
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        performSegue(withIdentifier: Constant.goDetailsMusicVideo, sender: self)
-//
-//    }
-//
-//    //MARK: - prepareSegue
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == Constant.goDetailsMusicVideo {
-//            let detailsController = segue.destination as! SearchDetails
-//            if let indexPath = tableView.indexPathForSelectedRow {
-//                detailsController.musicDetails = msuicName[indexPath.row]
-//            }else{
-//                return print("error")
-//            }
-//        }
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.ViewModel.userPressed(at: indexPath)
+        performSegue(withIdentifier: "show", sender: self)
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? SearchDetailsVC,
+           let photo = ViewModel.selectIndex {
+            vc.imageResult  = photo.artworkUrl100
+            vc.discrationResult   = photo.resultDescription
+            vc.nameResult    = photo.artistName
+            vc.titleNiv   = photo.trackCensoredName
+        }
+    }           
+    
 }
 extension SearchVC :UISearchBarDelegate, UISearchControllerDelegate{
     
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        showLoadingView()
-        NetworkManger.shared.searchBooks(searchText: searchText) { [weak self] result in
-            guard let self = self else{return}
-            switch result {
-            case .success(let response):
-                
-                self.bookName = response.results ?? []
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-                self.dismissLoadingView()
-
-            case .failure(let error):
-                self.dismissLoadingView()
-                
-                self.showAlert(withTitle: "Some thing error", withMessage: error.rawValue)
-            }
-        }
+        initVM(searchText: searchText)
     }
     
-    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        bookName.removeAll()
+        ViewModel.cellViewModel.removeAll()
         self.tableView.reloadData()
         self.dismissLoadingView()
-
+        
     }
     
 }

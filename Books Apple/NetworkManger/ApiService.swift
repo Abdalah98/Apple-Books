@@ -15,7 +15,7 @@ protocol TopPaidBookServiceProrocol {
     func getTopPaidBooks(completion: @escaping (Result<TopBook , ResoneError>) -> Void)
 }
 
-protocol SearchResultBookServiceProtocol {
+protocol SearchBookServiceProtocol {
     func searchResultBook(searchText:String,completion: @escaping (Result<SearchBook , ResoneError>) -> Void)
 }
 
@@ -66,7 +66,7 @@ extension ApiService : TopPaidBookServiceProrocol{
     
 }
 
-extension ApiService : SearchResultBookServiceProtocol{
+extension ApiService : SearchBookServiceProtocol{
     func searchResultBook(searchText: String, completion: @escaping (Result<SearchBook, ResoneError>) -> Void) {
         fetchGenericJSONData(urlString: "https://itunes.apple.com/search?term=\(searchText)Guide&entity=ebook", completion: completion)
     }

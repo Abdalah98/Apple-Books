@@ -19,13 +19,15 @@ class BookStoreVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Top Free Book"
-
+        
         configureCollection()
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         initVM()
         
     }
-    
-  
     
     func initVM(){
         bookStoreViewModel.showAlertClosure = { [weak self ] () in

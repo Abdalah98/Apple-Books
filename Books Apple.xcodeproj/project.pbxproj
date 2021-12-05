@@ -18,6 +18,9 @@
 		B25220FC2751F489003E6894 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B25220FA2751F489003E6894 /* Search.storyboard */; };
 		B25221012751F4ED003E6894 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25220FF2751F4ED003E6894 /* SearchCell.swift */; };
 		B25221022751F4ED003E6894 /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B25221002751F4ED003E6894 /* SearchCell.xib */; };
+		B26D6810275D3F8A003164A0 /* SrearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D680F275D3F8A003164A0 /* SrearchViewModel.swift */; };
+		B26D6813275D414A003164A0 /* SearchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D6812275D414A003164A0 /* SearchCellViewModel.swift */; };
+		B26D6819275D564D003164A0 /* SearchDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D6818275D564D003164A0 /* SearchDetailsVC.swift */; };
 		B26F00AE2753038D00A43EE4 /* BookStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26F00AD2753038D00A43EE4 /* BookStoreViewModel.swift */; };
 		B26F00B127530A3F00A43EE4 /* BookStoreCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26F00B027530A3F00A43EE4 /* BookStoreCellViewModel.swift */; };
 		B2860C1E27404D4000EDDD9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2860C1D27404D4000EDDD9B /* AppDelegate.swift */; };
@@ -32,7 +35,6 @@
 		B2A752ED2757114400A4BC82 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A752EC2757114400A4BC82 /* SearchVC.swift */; };
 		B2E2AEC7275BE1D100E50B9C /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E2AEC6275BE1D100E50B9C /* ApiService.swift */; };
 		B2E2AECA275BEC3200E50B9C /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E2AEC9275BEC3200E50B9C /* State.swift */; };
-		B2E2AECE275BFB6200E50B9C /* NetworkManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E2AECD275BFB6100E50B9C /* NetworkManger.swift */; };
 		B2EC8657275C018E00FD57DD /* TopFreeBooks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2EC8655275C018E00FD57DD /* TopFreeBooks.storyboard */; };
 		B2EC865A275C019E00FD57DD /* TopPaidBooks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2EC8659275C019E00FD57DD /* TopPaidBooks.storyboard */; };
 		B2EC8664275C1B6400FD57DD /* TopPaidBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EC8663275C1B6400FD57DD /* TopPaidBookVC.swift */; };
@@ -48,6 +50,9 @@
 		B25220FB2751F489003E6894 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Books Apple/Base.lproj/Search.storyboard"; sourceTree = "<group>"; };
 		B25220FF2751F4ED003E6894 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		B25221002751F4ED003E6894 /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
+		B26D680F275D3F8A003164A0 /* SrearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SrearchViewModel.swift; sourceTree = "<group>"; };
+		B26D6812275D414A003164A0 /* SearchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCellViewModel.swift; sourceTree = "<group>"; };
+		B26D6818275D564D003164A0 /* SearchDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailsVC.swift; sourceTree = "<group>"; };
 		B26F00AD2753038D00A43EE4 /* BookStoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookStoreViewModel.swift; sourceTree = "<group>"; };
 		B26F00B027530A3F00A43EE4 /* BookStoreCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookStoreCellViewModel.swift; sourceTree = "<group>"; };
 		B2860C1A27404D4000EDDD9B /* Books Apple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Books Apple.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,7 +69,6 @@
 		B2A752EC2757114400A4BC82 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		B2E2AEC6275BE1D100E50B9C /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		B2E2AEC9275BEC3200E50B9C /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
-		B2E2AECD275BFB6100E50B9C /* NetworkManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManger.swift; sourceTree = "<group>"; };
 		B2EC8656275C018E00FD57DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Books Apple/StoryBoard/Base.lproj/TopFreeBooks.storyboard"; sourceTree = "<group>"; };
 		B2EC8659275C019E00FD57DD /* TopPaidBooks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TopPaidBooks.storyboard; sourceTree = "<group>"; };
 		B2EC8663275C1B6400FD57DD /* TopPaidBookVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPaidBookVC.swift; sourceTree = "<group>"; };
@@ -123,6 +127,25 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		B26D6815275D4CFF003164A0 /* SearchViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B26D6812275D414A003164A0 /* SearchCellViewModel.swift */,
+				B26D680F275D3F8A003164A0 /* SrearchViewModel.swift */,
+			);
+			name = SearchViewModel;
+			sourceTree = "<group>";
+		};
+		B26D6816275D4D18003164A0 /* BookViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B26F00AD2753038D00A43EE4 /* BookStoreViewModel.swift */,
+				B26F00B027530A3F00A43EE4 /* BookStoreCellViewModel.swift */,
+				B2EC8666275C1BFD00FD57DD /* TopPaidBookViewModel.swift */,
+			);
+			name = BookViewModel;
+			sourceTree = "<group>";
+		};
 		B26F00A7275302FB00A43EE4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,9 +167,8 @@
 		B26F00AC2753036C00A43EE4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				B26F00AD2753038D00A43EE4 /* BookStoreViewModel.swift */,
-				B26F00B027530A3F00A43EE4 /* BookStoreCellViewModel.swift */,
-				B2EC8666275C1BFD00FD57DD /* TopPaidBookViewModel.swift */,
+				B26D6816275D4D18003164A0 /* BookViewModel */,
+				B26D6815275D4CFF003164A0 /* SearchViewModel */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -206,7 +228,6 @@
 		B2860C442740506300EDDD9B /* NetworkManger */ = {
 			isa = PBXGroup;
 			children = (
-				B2E2AECD275BFB6100E50B9C /* NetworkManger.swift */,
 				B2E2AEC6275BE1D100E50B9C /* ApiService.swift */,
 			);
 			path = NetworkManger;
@@ -278,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				B2A752EC2757114400A4BC82 /* SearchVC.swift */,
+				B26D6818275D564D003164A0 /* SearchDetailsVC.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -376,9 +398,10 @@
 				B2E2AEC7275BE1D100E50B9C /* ApiService.swift in Sources */,
 				B2A752EA275710E400A4BC82 /* SearchBook.swift in Sources */,
 				B26F00AE2753038D00A43EE4 /* BookStoreViewModel.swift in Sources */,
+				B26D6810275D3F8A003164A0 /* SrearchViewModel.swift in Sources */,
 				B2860C4D2740508F00EDDD9B /* ResoneError.swift in Sources */,
 				B2EC8664275C1B6400FD57DD /* TopPaidBookVC.swift in Sources */,
-				B2E2AECE275BFB6200E50B9C /* NetworkManger.swift in Sources */,
+				B26D6813275D414A003164A0 /* SearchCellViewModel.swift in Sources */,
 				B2A752ED2757114400A4BC82 /* SearchVC.swift in Sources */,
 				B2860C582740523B00EDDD9B /* Helper+Ext.swift in Sources */,
 				B24E82782752D6550069224D /* DetailsVS.swift in Sources */,
@@ -386,6 +409,7 @@
 				B24E826E2752C0D80069224D /* BookStoreVC.swift in Sources */,
 				B2860C1E27404D4000EDDD9B /* AppDelegate.swift in Sources */,
 				B24E82732752C8B10069224D /* BookStoreCell.swift in Sources */,
+				B26D6819275D564D003164A0 /* SearchDetailsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

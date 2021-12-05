@@ -19,11 +19,15 @@ class TopPaidBookVC: UIViewController {
         title = "Top Paid Book"
 
         configureCollection()
-        initVM()
+    //    initVM()
         
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        initVM()
+
+    }
 
     func initVM(){
         viewModel.showAlertClouser = {[weak self] in ()

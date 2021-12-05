@@ -17,5 +17,12 @@ class SearchCell: UITableViewCell {
         // Initialization code
     }
 
-    
+    var searchCellViewModel:SearchCellViewModel?{
+    didSet{
+        nameBook.text =    searchCellViewModel?.nameBook  ?? ""
+        nameArtist.text = searchCellViewModel?.nameArtist  ?? ""
+        imageView?.sd_setImage(with: URL(string: searchCellViewModel?.imageViewBook  ?? ""))
+    }
+        
+    }
 }
