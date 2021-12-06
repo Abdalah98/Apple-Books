@@ -67,9 +67,9 @@ class BookStoreVC: UIViewController {
             }
         }
         
-        bookStoreViewModel.reloadCollectionViewClouser = {
+        bookStoreViewModel.reloadCollectionViewClouser = { [weak self] () in
             DispatchQueue.main.async {
-                self.bookStoreCollectionView.reloadData()
+                self?.bookStoreCollectionView.reloadData()
             }
             
         }

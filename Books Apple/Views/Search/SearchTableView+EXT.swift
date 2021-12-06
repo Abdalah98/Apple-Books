@@ -21,12 +21,15 @@ extension SearchVC : UITableViewDataSource , UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(ViewModel.numofCell)
         return  ViewModel.numofCell
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.SearchCell) as! SearchCell
+        guard  let cell = tableView.dequeueReusableCell(withIdentifier: Constant.SearchCell) as? SearchCell else {
+            fatalError("Cell not exists in storyboard")
+        }
         let result = ViewModel.getCellViewModel(at: indexPath)
         cell.searchCellViewModel = result
         return cell

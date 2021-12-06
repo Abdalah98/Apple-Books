@@ -27,20 +27,39 @@ class SearchViewModel {
         }
     }
     
-    var state:State = .empty {
-        didSet{
-            showAlertClouser?()
+   
+    var state: State = .empty {
+        didSet {
+            self.updateLoadingStatus?()
         }
     }
-    
-    var alertMessage : String?{
-        didSet{
-            updateLoadingStatus?()
+
+    var alertMessage: String? {
+        didSet {
+            self.showAlertClouser?()
         }
     }
     
     var numofCell : Int {
         return cellViewModel.count
+    }
+    
+    func initFetchData(searchText : String){
+        state = .loading
+        apiService.searchResultBook(searchText: searchText) { [weak self] result in
+            guard let self = self else{return}
+            switch result {
+            case .success(let response):
+                
+                self.processFetchedBook(result: response.results ?? [])
+                self.state = .populated
+                
+            case .failure(let error):
+                self.state = .error
+                self.alertMessage = error.rawValue
+                
+            }
+        }
     }
     
     func getCellViewModel(at indexPath : IndexPath) -> SearchCellViewModel {
@@ -72,20 +91,5 @@ class SearchViewModel {
     }
     
     
-    func initFetchData(searchText : String){
-        apiService.searchResultBook(searchText: searchText) { [weak self] result in
-            guard let self = self else{return}
-            switch result {
-            case .success(let response):
-                
-                self.processFetchedBook(result: response.results ?? [])
-                self.state = .populated
-                
-            case .failure(let error):
-                self.state = .error
-                self.alertMessage = error.rawValue
-                
-            }
-        }
-    }
+
 }

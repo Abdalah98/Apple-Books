@@ -68,7 +68,6 @@ class TopPaidBookVC: UIViewController {
         
         viewModel.reloadcollectionViewClouser = {[weak self] in ()
             DispatchQueue.main.async {
-                
                 self?.collectionView.reloadData()
             }
         }

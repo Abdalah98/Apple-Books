@@ -32,31 +32,30 @@ class TopFreeBookViewModel  {
     //    // callback for interfaces
 
     var numberOfCell :Int {
-        print(cellViewModel.count)
         return cellViewModel.count
     }
     
-        var state: State = .empty {
-            didSet {
-                self.updateLoadingStatus?()
-            }
+    var state: State = .empty {
+        didSet {
+            self.updateLoadingStatus?()
         }
-    
-        var alertMessage: String? {
-            didSet {
-                self.showAlertClosure?()
-            }
+    }
+
+    var alertMessage: String? {
+        didSet {
+            self.showAlertClosure?()
         }
+    }
      
     
     func initFetchData(){
+        state = .loading
 
         apiService.getTopFreeBook{[weak self] result in
             guard let self = self else{return}
             switch result {
             case .success(let response):
                 
-               // self.book = response.feed?.results ?? []
                 self.processFetchedBook(books: response.feed?.results ?? [])
                 self.state = .populated
             

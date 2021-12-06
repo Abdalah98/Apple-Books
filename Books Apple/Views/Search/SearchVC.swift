@@ -13,7 +13,6 @@ class SearchVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let searchController = UISearchController()
-    var bookName = [ResultSearch]()
     
     var ViewModel : SearchViewModel = {
         return SearchViewModel()
@@ -58,26 +57,19 @@ class SearchVC: UIViewController {
                 switch self.ViewModel.state {
                 case .empty, .error:
                     self.dismissLoadingView()
-                    UIView.animate(withDuration: 0.2, animations: {
-                        self.tableView.alpha = 0.0
-                    })
+                 
                 case .loading:
                     self.showLoadingView()
-                    UIView.animate(withDuration: 0.2, animations: {
-                        self.tableView.alpha = 0.0
-                    })
+                   
                 case .populated:
                     self.dismissLoadingView()
-                    UIView.animate(withDuration: 0.2, animations: {
-                        self.tableView.alpha = 1.0
-                    })
                 }
             }
         }
         
-        ViewModel.reloadTableViewClouser = {
+        ViewModel.reloadTableViewClouser = { [weak self] () in
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
             
         }
@@ -92,11 +84,10 @@ extension SearchVC :UISearchBarDelegate, UISearchControllerDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         initVM(searchText: searchText)
     }
-    
+
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         ViewModel.cellViewModel.removeAll()
         self.tableView.reloadData()
-        self.dismissLoadingView()
         
     }
     
