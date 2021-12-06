@@ -7,6 +7,7 @@
 
 import Foundation
 class SearchViewModel {
+    
     let apiService : SearchBookServiceProtocol
     private var  resultBook = [ResultSearch]()
     var selectIndex : ResultSearch?
@@ -20,7 +21,7 @@ class SearchViewModel {
     var updateLoadingStatus : (()->())?
     
     
-     var cellViewModel:[SearchCellViewModel] = [SearchCellViewModel](){
+    var cellViewModel:[SearchCellViewModel] = [SearchCellViewModel](){
         didSet{
             self.reloadTableViewClouser?()
         }

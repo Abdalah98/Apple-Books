@@ -53,14 +53,14 @@ class ApiService {
 
 extension ApiService : TopFreeBookServiceProtocol{
     func getTopFreeBook(completion: @escaping (Result<TopBook, ResoneError>) -> Void) {
-        fetchGenericJSONData(urlString:"https://rss.applemarketingtools.com/api/v2/us/books/top-free/50/books.json" , completion: completion)
+        fetchGenericJSONData(urlString:URLS.topFreeBooks, completion: completion)
         
     }
 }
 
 extension ApiService : TopPaidBookServiceProrocol{
     func getTopPaidBooks(completion: @escaping (Result<TopBook, ResoneError>) -> Void) {
-        fetchGenericJSONData(urlString: "https://rss.applemarketingtools.com/api/v2/us/books/top-paid/50/books.json", completion: completion)
+        fetchGenericJSONData(urlString: URLS.topPaidBooks, completion: completion)
     }
     
     
@@ -71,7 +71,6 @@ extension ApiService : SearchBookServiceProtocol{
         fetchGenericJSONData(urlString: "https://itunes.apple.com/search?term=\(searchText)Guide&entity=ebook", completion: completion)
     }
     
-   
    
 
 }

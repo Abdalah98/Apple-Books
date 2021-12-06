@@ -8,9 +8,8 @@
 import UIKit
 
 class DetailsVS: UIViewController {
-
+    
     @IBOutlet weak var imageBook: UIImageView!
-   // @IBOutlet weak var copyRightLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
@@ -21,26 +20,25 @@ class DetailsVS: UIViewController {
     var Relase : String?
     var url : String?
     var artistUrl : String?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = "©\(copyRight ?? "")"
-      //  copyRightLabel.text = copyRight
         releaseDateLabel.text = Relase
         nameLabel.text = name
         artistNameLabel.text = nameArtist
-
         imageBook.sd_setImage(with: URL(string: image ?? "" ))
     }
     
-
+    
     @IBAction func urlAction(_ sender: Any) {
         goSafari(urlString: url ?? "")
     }
     
     @IBAction func artistUrlAction(_ sender: Any) {
         goSafari(urlString: artistUrl ?? "")
-
+        
     }
     
 }

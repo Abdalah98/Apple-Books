@@ -7,7 +7,9 @@
 
 import UIKit
 import SDWebImage
+
 class SearchVC: UIViewController {
+    
     @IBOutlet weak var tableView: UITableView!
     
     let searchController = UISearchController()
@@ -15,14 +17,15 @@ class SearchVC: UIViewController {
     
     var ViewModel : SearchViewModel = {
         return SearchViewModel()
-    } ()
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.allowsSelection = true
         tableViewDesign()
         configureNIBCell()
         configureSearch()
-        //   initVM()
     }
     
     fileprivate func configureSearch() {
@@ -81,54 +84,8 @@ class SearchVC: UIViewController {
         ViewModel.initFetchData(searchText: searchText)
     }
 }
-extension SearchVC : UITableViewDataSource , UITableViewDelegate{
-    
-    
-    func configureNIBCell(){
-        let nib = UINib(nibName: Constant.SearchCell, bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: Constant.SearchCell)
-    }
-    
-    
-    func tableViewDesign() {
-        tableView.tableFooterView = UIView()
-        tableView.separatorStyle = .none
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  ViewModel.numofCell
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.SearchCell) as! SearchCell
-        let result = ViewModel.getCellViewModel(at: indexPath)
-        cell.searchCellViewModel = result
-        return cell
-    }
-    
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 125
-    }
-    
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.ViewModel.userPressed(at: indexPath)
-        performSegue(withIdentifier: "show", sender: self)
-        
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? SearchDetailsVC,
-           let photo = ViewModel.selectIndex {
-            vc.imageResult  = photo.artworkUrl100
-            vc.discrationResult   = photo.resultDescription
-            vc.nameResult    = photo.artistName
-            vc.titleNiv   = photo.trackCensoredName
-        }
-    }           
-    
-}
+
+
 extension SearchVC :UISearchBarDelegate, UISearchControllerDelegate{
     
     

@@ -7,7 +7,7 @@
 
 import Foundation
 struct SearchCellViewModel {
-    var  imageViewBook : String
-    var  nameBook   : String
-    var    nameArtist :String
+    var  imageViewBook  : String
+    var  nameBook       : String
+    var  nameArtist     :String
 }

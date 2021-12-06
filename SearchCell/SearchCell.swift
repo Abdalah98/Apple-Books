@@ -8,21 +8,18 @@
 import UIKit
 
 class SearchCell: UITableViewCell {
-
+    
     @IBOutlet weak var imageViewBook: UIImageView!
     @IBOutlet weak var nameBook: UILabel!
     @IBOutlet weak var nameArtist: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    
 
     var searchCellViewModel:SearchCellViewModel?{
-    didSet{
-        nameBook.text =    searchCellViewModel?.nameBook  ?? ""
-        nameArtist.text = searchCellViewModel?.nameArtist  ?? ""
-        imageView?.sd_setImage(with: URL(string: searchCellViewModel?.imageViewBook  ?? ""))
-    }
+        didSet{
+            nameBook.text =    searchCellViewModel?.nameBook  ?? ""
+            nameArtist.text = searchCellViewModel?.nameArtist  ?? ""
+            imageView?.sd_setImage(with: URL(string: searchCellViewModel?.imageViewBook  ?? ""))
+        }
         
     }
 }

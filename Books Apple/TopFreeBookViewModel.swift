@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BookStoreViewModel  {
+class TopFreeBookViewModel  {
     let apiService : TopFreeBookServiceProtocol
     var selectedPhoto: ResultBooks?
 
