@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B216461F27409521009B2869 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = B216461E27409521009B2869 /* Toast */; };
 		B216462B27409599009B2869 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B216462A27409599009B2869 /* SDWebImage */; };
-		B21EE6292751C1B100E279C6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B21EE6282751C1B100E279C6 /* Alamofire */; };
 		B21EE63A2751D03C00E279C6 /* TopBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21EE6392751D03C00E279C6 /* TopBook.swift */; };
 		B24E826E2752C0D80069224D /* BookStoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24E826D2752C0D80069224D /* BookStoreVC.swift */; };
 		B24E82732752C8B10069224D /* BookStoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24E82712752C8B10069224D /* BookStoreCell.swift */; };
@@ -86,7 +85,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B21EE6292751C1B100E279C6 /* Alamofire in Frameworks */,
 				B216462B27409599009B2869 /* SDWebImage in Frameworks */,
 				B216461F27409521009B2869 /* Toast in Frameworks */,
 			);
@@ -364,7 +362,6 @@
 			packageProductDependencies = (
 				B216461E27409521009B2869 /* Toast */,
 				B216462A27409599009B2869 /* SDWebImage */,
-				B21EE6282751C1B100E279C6 /* Alamofire */,
 			);
 			productName = "Books Apple";
 			productReference = B2860C1A27404D4000EDDD9B /* Books Apple.app */;
@@ -396,7 +393,6 @@
 			packageReferences = (
 				B216461D27409521009B2869 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				B216462927409599009B2869 /* XCRemoteSwiftPackageReference "SDWebImage" */,
-				B21EE6272751C1B100E279C6 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = B2860C1B27404D4000EDDD9B /* Products */;
 			projectDirPath = "";
@@ -689,14 +685,6 @@
 				minimumVersion = 5.12.1;
 			};
 		};
-		B21EE6272751C1B100E279C6 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.4.4;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -709,11 +697,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B216462927409599009B2869 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
-		};
-		B21EE6282751C1B100E279C6 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B21EE6272751C1B100E279C6 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
