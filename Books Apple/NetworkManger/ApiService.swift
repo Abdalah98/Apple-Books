@@ -8,11 +8,11 @@
 import Foundation
 
 protocol TopFreeBookServiceProtocol {
-    func getTopFreeBook(completion: @escaping (Result<TopBook , ResoneError>) -> Void)
+    func getTopFreeBook(urlString:String,completion: @escaping (Result<TopBook , ResoneError>) -> Void)
 }
 
 protocol TopPaidBookServiceProrocol {
-    func getTopPaidBooks(completion: @escaping (Result<TopBook , ResoneError>) -> Void)
+    func getTopPaidBooks(urlString:String,completion: @escaping (Result<TopBook , ResoneError>) -> Void)
 }
 
 protocol SearchBookServiceProtocol {
@@ -52,15 +52,15 @@ class ApiService {
 }
 
 extension ApiService : TopFreeBookServiceProtocol{
-    func getTopFreeBook(completion: @escaping (Result<TopBook, ResoneError>) -> Void) {
-        fetchGenericJSONData(urlString:URLS.topFreeBooks, completion: completion)
+    func getTopFreeBook(urlString:String,completion: @escaping (Result<TopBook, ResoneError>) -> Void) {
+        fetchGenericJSONData(urlString:urlString, completion: completion)
         
     }
 }
 
 extension ApiService : TopPaidBookServiceProrocol{
-    func getTopPaidBooks(completion: @escaping (Result<TopBook, ResoneError>) -> Void) {
-        fetchGenericJSONData(urlString: URLS.topPaidBooks, completion: completion)
+    func getTopPaidBooks(urlString:String,completion: @escaping (Result<TopBook, ResoneError>) -> Void) {
+        fetchGenericJSONData(urlString: urlString, completion: completion)
     }
     
     
