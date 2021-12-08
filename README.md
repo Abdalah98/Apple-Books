@@ -9,7 +9,7 @@ MVVM With Dependency Injection and using Unit Testing
 ### Features
 
 
- 	 • Project Organization & Architecture
+ 	•	 Project Organization & Architecture
 	•	 Support Dark Mode & light mode 
 	•	 Searching through  by name Book.
 	•	 Downloading & Caching Image
@@ -28,5 +28,5 @@ MVVM With Dependency Injection and using Unit Testing
 #### UI
 
 #### Top free books
-#### top paid books
-#### search book name
+#### Top paid books
+#### Search book name
