@@ -1,5 +1,5 @@
 # Apple-Books
-MVVM With Dependency Injection and using Unit Testing
+MVVM With Dependency Injection and using UnitTesting
 
 * Use the ITunse API - No authentication needed  https://rss.itunes.apple.com/en-us
 
@@ -10,6 +10,7 @@ MVVM With Dependency Injection and using Unit Testing
 
 
  	•	 Project Organization & Architecture
+	•	 MVVM With Dependency Injection
 	•	 Support Dark Mode & light mode 
 	•	 Searching through  by name Book.
 	•	 Downloading & Caching Image
@@ -17,7 +18,6 @@ MVVM With Dependency Injection and using Unit Testing
 	•	 Asynchronous Data Fetch
 	•	 Planning our Network Calls - API, JSON, Model
         • 	 Generics Networking(Custom Response)
-  	•	 MVVM With Dependency Injection
         •	 UnitTesting
         •	 and many tools used
 
