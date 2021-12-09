@@ -32,4 +32,7 @@ MVVM With Dependency Injection and using Unit Testing
 
 #### Top paid books
 ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/41602889/145334807-9313ad73-1eef-4998-9af2-d55ec44f5644.gif)
+
 #### Search book name
+![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/41602889/145335328-83f0aa13-38d5-44f7-bb3f-ac3e7f0d1e5e.gif)
+
