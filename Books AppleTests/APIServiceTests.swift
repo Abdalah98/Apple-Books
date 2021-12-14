@@ -21,7 +21,43 @@ class APIServiceTests: XCTestCase {
         sut = nil
         super.tearDown()
     }
+    
 // lazm kalmt test lw m4 mowgda m4 htrun
+    func test_fetch_Search() {
+        let promise = XCTestExpectation(description: "Fetch Book completed")
+        var responseError: Error?
+        var responsePhotos: [ResultSearch]?
+
+        // When
+        guard let bundle = Bundle.unitTest.path(forResource: "search", ofType: "json") else {
+            XCTFail("Error: content not found")
+            return
+        }
+        
+        
+        sut.fetchSearch(from: URL(fileURLWithPath: bundle)) { result in
+            switch result {
+            case .success(let response):
+
+                responsePhotos = response.results
+                promise.fulfill()
+
+
+            case .failure(let error):
+                responseError = error
+                promise.fulfill()
+
+
+            }
+
+        }
+
+        wait(for: [promise], timeout: 10)
+
+        // Then
+        XCTAssertNil(responseError)
+        XCTAssertNotNil(responsePhotos)
+    }
     func test_fetch_popular_photos() {
         // Given
         let promise = XCTestExpectation(description: "Fetch Book completed")
@@ -34,42 +70,28 @@ class APIServiceTests: XCTestCase {
             return
         }
         // hena badelo el  bundel bta3te data bta3t url
-        //(url:  URL(fileURLWithPath: bundle) )
-        sut.getTopFreeBook(urlString:URLS.topFreeBooks){ result in
-            switch result {
-            case .success(let response):
-                
-                responsePhotos = response.feed?.results
-                promise.fulfill()
+        //
 
+        sut.fetchBooks(from: URL(fileURLWithPath: bundle)) { result in
+                        switch result {
+                        case .success(let response):
             
-            case .failure(let error):
-                responseError = error
-                promise.fulfill()
+                            responsePhotos = response.feed?.results
+                            promise.fulfill()
+            
+            
+                        case .failure(let error):
+                            responseError = error
+                            promise.fulfill()
+            
+            
+                        }
+            
+                    }
 
-
-            }
-
-        }
         
-        sut.getTopPaidBooks(urlString:URLS.topPaidBooks){ result in
-            switch result {
-            case .success(let response):
 
-                responsePhotos = response.feed?.results
-                promise.fulfill()
-
-
-            case .failure(let error):
-                responseError = error
-                promise.fulfill()
-
-
-            }
-
-        }
-        // hana time 1 s leh 34an m4 bta5od w2t 34an  api data m4 realy
-        wait(for: [promise], timeout: .infinity)
+        wait(for: [promise], timeout: 10)
 
         // Then
         XCTAssertNil(responseError)

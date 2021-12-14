@@ -9,11 +9,11 @@ import Foundation
 
 enum URLS {
     
-    static let country            = "us"
-    static let resultsLimit       = "50"
-    static let mediaType          = "books"
-    static let main               = "https://rss.applemarketingtools.com"
-    static let entity             =  main + "/api/v2/\(country)/\(mediaType)/"
+    private  static let country            = "us"
+    private  static let resultsLimit       = "50"
+    private  static let mediaType          = "books"
+    private  static let main               = "https://rss.applemarketingtools.com"
+    private  static let entity             =  main + "/api/v2/\(country)/\(mediaType)/"
     
     static let topPaidBooks       = entity + "/top-paid/\(resultsLimit)//books.json"
     static let topFreeBooks       = entity + "/top-free/\(resultsLimit)//books.json"

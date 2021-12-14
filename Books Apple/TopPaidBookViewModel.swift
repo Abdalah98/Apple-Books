@@ -46,7 +46,7 @@ class TopPaidBookViewModel {
     func initFetchData(){
         state = .loading
 
-        apiService.getTopPaidBooks(urlString: URLS.topPaidBooks) { [weak self] result in
+        apiService.getTopPaidBooks() { [weak self] result in
                 guard let self = self else{return}
                 switch result {
                 case .success(let response):

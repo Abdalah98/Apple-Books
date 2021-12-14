@@ -37,6 +37,8 @@
 		B2A752ED2757114400A4BC82 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A752EC2757114400A4BC82 /* SearchVC.swift */; };
 		B2E2AEC7275BE1D100E50B9C /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E2AEC6275BE1D100E50B9C /* ApiService.swift */; };
 		B2E2AECA275BEC3200E50B9C /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E2AEC9275BEC3200E50B9C /* State.swift */; };
+		B2E6614627685DFB005D6465 /* ApiServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E6614527685DFB005D6465 /* ApiServiceProtocol.swift */; };
+		B2E6614A276861A8005D6465 /* search.json in Resources */ = {isa = PBXBuildFile; fileRef = B2E66149276861A8005D6465 /* search.json */; };
 		B2EC8657275C018E00FD57DD /* TopFreeBooks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2EC8655275C018E00FD57DD /* TopFreeBooks.storyboard */; };
 		B2EC865A275C019E00FD57DD /* TopPaidBooks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2EC8659275C019E00FD57DD /* TopPaidBooks.storyboard */; };
 		B2EC8664275C1B6400FD57DD /* TopPaidBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EC8663275C1B6400FD57DD /* TopPaidBookVC.swift */; };
@@ -89,6 +91,8 @@
 		B2A752EC2757114400A4BC82 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		B2E2AEC6275BE1D100E50B9C /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		B2E2AEC9275BEC3200E50B9C /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		B2E6614527685DFB005D6465 /* ApiServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceProtocol.swift; sourceTree = "<group>"; };
+		B2E66149276861A8005D6465 /* search.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = search.json; sourceTree = "<group>"; };
 		B2EC8656275C018E00FD57DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Books Apple/StoryBoard/Base.lproj/TopFreeBooks.storyboard"; sourceTree = "<group>"; };
 		B2EC8659275C019E00FD57DD /* TopPaidBooks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TopPaidBooks.storyboard; sourceTree = "<group>"; };
 		B2EC8663275C1B6400FD57DD /* TopPaidBookVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPaidBookVC.swift; sourceTree = "<group>"; };
@@ -258,7 +262,6 @@
 		B2860C1C27404D4000EDDD9B /* Books Apple */ = {
 			isa = PBXGroup;
 			children = (
-				B2F783EF27604E700097B117 /* stub.json */,
 				B2860C3227404D5300EDDD9B /* Delegate */,
 				B2860C442740506300EDDD9B /* NetworkManger */,
 				B216462127409526009B2869 /* Model */,
@@ -296,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				B2E2AEC6275BE1D100E50B9C /* ApiService.swift */,
+				B2E6614527685DFB005D6465 /* ApiServiceProtocol.swift */,
 			);
 			path = NetworkManger;
 			sourceTree = "<group>";
@@ -377,10 +381,12 @@
 		B2F783D6276048CB0097B117 /* Books AppleTests */ = {
 			isa = PBXGroup;
 			children = (
+				B2F783EF27604E700097B117 /* stub.json */,
 				B2F783B4276044700097B117 /* Bundle+unitTests.swift */,
 				B2F783CB276047F90097B117 /* APIServiceTests.swift */,
 				B2F783D9276048CB0097B117 /* Info.plist */,
 				B2F783FE27606F3D0097B117 /* TopFreeBookViewModelTests.swift */,
+				B2E66149276861A8005D6465 /* search.json */,
 			);
 			path = "Books AppleTests";
 			sourceTree = "<group>";
@@ -490,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2F783F127604E700097B117 /* stub.json in Resources */,
+				B2E6614A276861A8005D6465 /* search.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +519,7 @@
 				B2A752EA275710E400A4BC82 /* SearchBook.swift in Sources */,
 				B26F00AE2753038D00A43EE4 /* TopFreeBookViewModel.swift in Sources */,
 				B26D6810275D3F8A003164A0 /* SrearchViewModel.swift in Sources */,
+				B2E6614627685DFB005D6465 /* ApiServiceProtocol.swift in Sources */,
 				B2860C4D2740508F00EDDD9B /* ResoneError.swift in Sources */,
 				B2EC8664275C1B6400FD57DD /* TopPaidBookVC.swift in Sources */,
 				B26D6813275D414A003164A0 /* SearchCellViewModel.swift in Sources */,
