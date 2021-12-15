@@ -8,7 +8,7 @@
 import Foundation
 
 class TopFreeBookViewModel  {
-    let apiService : TopFreeBookServiceProtocol
+    let apiService : ApiServiceProtocol
     var selectedPhoto: ResultBooks?
 
     private  var book = [ResultBooks]()
@@ -25,7 +25,7 @@ class TopFreeBookViewModel  {
     var showAlertClosure: (()->())?
     var updateLoadingStatus: (()->())?
 
-    init(apiService : TopFreeBookServiceProtocol = ApiService()) {
+    init(apiService : ApiServiceProtocol = ApiService()) {
         self.apiService = apiService
     }
     

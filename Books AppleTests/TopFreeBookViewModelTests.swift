@@ -9,23 +9,109 @@ import XCTest
 @testable import Books_Apple
 
 class TopFreeBookViewModelTests: XCTestCase {
-
     var sut: TopFreeBookViewModel!
- //   var apiServiceMock: APIServiceMock!
+    var sut1 : TopPaidBookViewModel!
+    var sut2 : SearchViewModel!
+    var apiServiceMock: APIServiceMock!
 
     override func setUp() {
         super.setUp()
-//        apiServiceMock = APIServiceMock()
-//        sut = PhotoListViewModel(apiService: apiServiceMock)
-        sut = TopFreeBookViewModel()
+        // creat an instance of the mock in BooksViewModelTests
+        apiServiceMock = APIServiceMock()
+        // inject apiServiceMock to TopFreeBookViewModel
+        sut = TopFreeBookViewModel(apiService: apiServiceMock)
+      // test testCreateCellViewModel
+//        sut = TopFreeBookViewModel()
+        sut1 = TopPaidBookViewModel()
+        sut2 = SearchViewModel()
     }
     
     override func tearDown() {
-        sut = nil
-  //      apiServiceMock = nil
+       sut = nil
+        sut1 = nil
+        sut2 = nil
+       apiServiceMock = nil
         super.tearDown()
     }
 
+    // A test method’s name always begins with test, followed by a description of what it tests.
+
+    // It’s good practice to format the test into given, when and then sections
+    // Given: Here, you set up any values needed.
+    // In this example, today’s date and a dummy photo object are created.
+    // test featch data in view model
+    func test_fetch_Books() {
+        // When
+        sut.initFetchData()
+    
+        // Then
+        XCTAssert(apiServiceMock.fetchTopBooksIsCalled)
+    }
+    
+    // testing fail
+        func test_fetch_book_fail() {
+            // Given
+            let error = ResoneError.notFound
+    
+            // When
+            sut.initFetchData()
+            apiServiceMock.fetchFail(error: error)
+    
+            // Then
+            XCTAssertEqual(sut.alertMessage, error.rawValue)
+        }
+    
+    // fect data lma bett7t fe cell
+    func testCreateCellViewModel() {
+        // Given
+        //TopFreeBook
+        let book  = ResultBooks(artistName: "as", id: "2", name: "abd", releaseDate: "22", kind: "apple", artistId: "d", artistUrl: "sd", artworkUrl100: "sd", genres: [], url: "ds", contentAdvisoryRating: "sd")
+
+             let cellViewModel = sut?.createCellViewModel(book: book)
+
+        // Then: This is the section where you’ll assert the result you expect with a message that prints if the test fails.
+        XCTAssertEqual(cellViewModel?.name, "\(book.name ?? "")")
+
+
+
+        // Then: This is the section where you’ll assert the result you expect with a message that prints if the test fails.
+        XCTAssertEqual(cellViewModel?.nameArtist, "\(book.artistName ?? "")")
+        
+        //Top Paid book
+        let bookPaid  = ResultBooks(artistName: "as", id: "2", name: "abd", releaseDate: "22", kind: "apple", artistId: "d", artistUrl: "sd", artworkUrl100: "sd", genres: [], url: "ds", contentAdvisoryRating: "sd")
+
+             let cellViewModelPaid = sut1?.creatCellModel(book: bookPaid)
+        
+        // Then: This is the section where you’ll assert the result you expect with a message that prints if the test fails.
+        XCTAssertEqual(cellViewModelPaid?.name, "\(bookPaid.name ?? "")")
+
+
+
+        // Then: This is the section where you’ll assert the result you expect with a message that prints if the test fails.
+        XCTAssertEqual(cellViewModelPaid?.nameArtist, "\(bookPaid.artistName ?? "")")
+        
+        //Search
+        
+        let search   = ResultSearch(artworkUrl60: "1000", artworkUrl100: "110", artistViewUrl: "pic", trackCensoredName: "", fileSizeBytes: 147, formattedPrice: "145", trackViewUrl: "url", artistIds: [], releaseDate: "deta", trackId: 96, trackName: "", genreIds: [], currency: "", kind: "y", artistId: 46, artistName: "", genres: [], price: 140, resultDescription: "ss", userRatingCount: 10, averageUserRating: 120)
+        
+        let cellViewModelSearch = sut2?.creatCellModel(resultBook: search)
+   
+   // Then: This is the section where you’ll assert the result you expect with a message that prints if the test fails.
+   XCTAssertEqual(cellViewModelSearch?.nameArtist, "\(search.artistName ?? "")")
+
+
+
+   // Then: This is the section where you’ll assert the result you expect with a message that prints if the test fails.
+   XCTAssertEqual(cellViewModelSearch?.nameBook, "\(search.trackCensoredName ?? "")")
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     // A test method’s name always begins with test, followed by a description of what it tests.
 
     // It’s good practice to format the test into given, when and then sections
@@ -192,15 +278,6 @@ class TopFreeBookViewModelTests: XCTestCase {
 //        XCTAssertEqual(vm.titleText, testPhoto.name)
 //    }
 
-    func testCreateCellViewModel() {
-        // Given
-        let book  = ResultBooks(artistName: "as", id: "2", name: "abd", releaseDate: "22", kind: "apple", artistId: "d", artistUrl: "sd", artworkUrl100: "sd", genres: [], url: "ds", contentAdvisoryRating: "sd")
-
-             let cellViewModel = sut?.createCellViewModel(book: book)
-
-        // Then: This is the section where you’ll assert the result you expect with a message that prints if the test fails.
-        XCTAssertEqual(cellViewModel?.name, "\(book.name ?? "")")
-
-    }
+ 
 
 }

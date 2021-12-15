@@ -80,7 +80,7 @@ class ApiService {
     
 }
 
-extension ApiService : TopFreeBookServiceProtocol,FetchBooks{
+extension ApiService : ApiServiceProtocol{
     
     func getTopFreeBook(completion: @escaping (Result<TopBook, ResoneError>) -> Void) {
         fetchBooks(from: topFreeBookURL, complete: completion)
@@ -96,7 +96,7 @@ extension ApiService : TopPaidBookServiceProrocol{
     
 }
 
-extension ApiService : SearchBookServiceProtocol,FetchSearch{
+extension ApiService :ApiServiceProtocolSearch{
   
     func searchResultBook(searchText: String, completion: @escaping (Result<SearchBook, ResoneError>) -> Void) {
         let searchResult: URL? = URL(string: "https://itunes.apple.com/search?term=\(searchText)Guide&entity=ebook")

@@ -8,11 +8,11 @@
 import Foundation
 class SearchViewModel {
     
-    let apiService : SearchBookServiceProtocol
+    let apiService : ApiServiceProtocolSearch
     private var  resultBook = [ResultSearch]()
     var selectIndex : ResultSearch?
     
-    init( apiService : SearchBookServiceProtocol = ApiService()) {
+    init( apiService : ApiServiceProtocolSearch = ApiService()) {
         self.apiService = apiService
     }
     
